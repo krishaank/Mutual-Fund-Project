@@ -1,0 +1,4 @@
+--- Data Quality Summary ---
+Total unique AMFI codes in Fund Master: 40
+Total unique AMFI codes in NAV History: 40
+Validation PASS: All codes in Fund Master exist in NAV History.
