@@ -1,4 +1,4 @@
-import os
+"""\ngenerate_advanced_analytics.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport os
 import sqlite3
 import nbformat as nbf
 

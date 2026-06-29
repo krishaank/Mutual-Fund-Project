@@ -1,4 +1,4 @@
-import pandas as pd
+"""\nrecommender.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport pandas as pd
 import sqlite3
 import argparse
 

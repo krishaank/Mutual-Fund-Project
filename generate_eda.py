@@ -1,4 +1,4 @@
-import os
+"""\ngenerate_eda.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport os
 import sqlite3
 import pandas as pd
 import nbformat as nbf

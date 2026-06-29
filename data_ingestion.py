@@ -1,4 +1,4 @@
-import pandas as pd
+"""\ndata_ingestion.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport pandas as pd
 import os
 
 def check_anomalies(df, name):

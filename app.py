@@ -1,4 +1,4 @@
-import streamlit as st
+"""\napp.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport streamlit as st
 import pandas as pd
 import sqlite3
 import plotly.express as px
