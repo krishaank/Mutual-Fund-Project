@@ -1,10 +1,16 @@
-"""\ngenerate_eda.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport os
+"""Bluestock Mutual Fund Analytics Capstone Project."""
+
 import sqlite3
-import pandas as pd
+import pathlib
+import os
+import pandas
+import pathlib
 import nbformat as nbf
 
+PROJECT_ROOT = pathlib.Path(__file__).parent.parent.resolve()
+
 def create_notebook():
-    nb = nbf.v4.new_notebook()
+    nb_node = nbf.v4.new_notebook()
     
     cells = []
     
@@ -15,9 +21,13 @@ We will analyze NAV trends, AUM growth, Investor Demographics, and Portfolio ris
 """))
 
     # 2. Setup and Imports
-    cells.append(nbf.v4.new_code_cell("""import pandas as pd
+    cells.append(nbf.v4.new_code_cell("""import pandas
+import pathlib
+import pandas as pd
 import numpy as np
 import sqlite3
+import pathlib
+import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
@@ -260,12 +270,12 @@ plt.show()
 10. **Financial Sector Overweight:** The sector allocation donut chart reveals that Indian mutual funds are heavily skewed towards the Financial Services sector (~30%+ average weight). *(Ref: Sector Allocation Donut)*
 """))
 
-    nb['cells'] = cells
+    nb_node['cells'] = cells
     
-    with open('notebooks/EDA_Analysis.ipynb', 'w', encoding='utf-8') as f:
-        nbf.write(nb, f)
-    
-    print("EDA_Analysis.ipynb generated successfully.")
+    out_path = PROJECT_ROOT / 'notebooks' / '03_eda_analysis.ipynb'
+    with open(out_path, 'w', encoding='utf-8') as f:
+        nbf.write(nb_node, f)
+    print(f"Generated {out_path}")
 
 if __name__ == '__main__':
     create_notebook()

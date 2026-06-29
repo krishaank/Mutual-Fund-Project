@@ -1,6 +1,11 @@
-"""\ngenerate_performance_analytics.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport os
+"""Bluestock Mutual Fund Analytics Capstone Project."""
+
 import sqlite3
+import pathlib
+import os
 import nbformat as nbf
+
+PROJECT_ROOT = pathlib.Path(__file__).parent.parent.resolve()
 
 def create_notebook():
     nb = nbf.v4.new_notebook()
@@ -12,9 +17,13 @@ This notebook calculates risk-adjusted performance metrics, alpha/beta regressio
 """))
 
     # 2. Setup
-    cells.append(nbf.v4.new_code_cell("""import pandas as pd
+    cells.append(nbf.v4.new_code_cell("""import pandas
+import pathlib
+import pandas as pd
 import numpy as np
 import sqlite3
+import pathlib
+import os
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy import stats
@@ -256,10 +265,11 @@ for f in top_5:
 
     nb['cells'] = cells
     
-    with open('notebooks/Performance_Analytics.ipynb', 'w', encoding='utf-8') as f:
+    out_path = PROJECT_ROOT / 'notebooks' / '04_performance_analytics.ipynb'
+    with open(out_path, 'w', encoding='utf-8') as f:
         nbf.write(nb, f)
     
-    print("Performance_Analytics.ipynb generated successfully.")
+    print(f"Generated {out_path}")
 
 if __name__ == '__main__':
     create_notebook()

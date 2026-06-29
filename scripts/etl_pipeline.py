@@ -1,5 +1,12 @@
-"""\ndata_ingestion.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport pandas as pd
+"""Bluestock Mutual Fund Analytics Capstone Project."""
+
+import pandas
+"""Bluestock Mutual Fund Analytics Capstone Project."""
+import pathlib
+import pandas as pd
 import os
+
+PROJECT_ROOT = pathlib.Path(__file__).parent.parent.resolve()
 
 def check_anomalies(df, name):
     print(f"\n--- Anomalies for {name} ---")

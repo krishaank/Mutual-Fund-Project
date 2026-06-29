@@ -1,8 +1,17 @@
-"""\napp.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport streamlit as st
+"""Bluestock Mutual Fund Analytics Capstone Project."""
+
+import pathlib
+import os as st
+import pandas
+import pathlib
 import pandas as pd
 import sqlite3
+import pathlib
+import os
 import plotly.express as px
 import plotly.graph_objects as go
+
+PROJECT_ROOT = pathlib.Path(__file__).parent.parent.resolve()
 from plotly.subplots import make_subplots
 
 # Set page config
@@ -33,11 +42,11 @@ conn = get_db_connection()
 # Load specific data globally
 @st.cache_data
 def load_scorecard():
-    return pd.read_csv('data/processed/fund_scorecard.csv')
+    return pd.read_csv(PROJECT_ROOT / 'data/processed/fund_scorecard.csv')
 
 @st.cache_data
 def load_benchmarks():
-    return pd.read_csv('data/processed/10_benchmark_indices_cleaned.csv')
+    return pd.read_csv(PROJECT_ROOT / 'data/processed/10_benchmark_indices_cleaned.csv')
 
 st.sidebar.title("📈 Bluestock MF Analytics")
 page = st.sidebar.radio("Navigation", [

@@ -1,6 +1,13 @@
-"""\nrecommender.py\nPart of the Bluestock Mutual Fund Analytics Capstone Project.\n"""\n\nimport pandas as pd
+"""Bluestock Mutual Fund Analytics Capstone Project."""
+
+import pathlib
+import pandas as pd
 import sqlite3
+import pathlib
+import os
 import argparse
+
+PROJECT_ROOT = pathlib.Path(__file__).parent.parent.resolve()
 
 def recommend_funds(risk_appetite):
     print(f"Generating recommendations for Risk Appetite: {risk_appetite}")
@@ -18,12 +25,12 @@ def recommend_funds(risk_appetite):
         return
     
     try:
-        scorecard = pd.read_csv('data/processed/fund_scorecard.csv')
+        scorecard = pd.read_csv(PROJECT_ROOT / 'data/processed/fund_scorecard.csv')
     except FileNotFoundError:
         print("Error: fund_scorecard.csv not found. Please run Performance Analytics first.")
         return
         
-    conn = sqlite3.connect('bluestock_mf.db')
+    conn = sqlite3.connect(PROJECT_ROOT / 'data' / 'db' / 'bluestock_mf.db')
     query = f"SELECT scheme_name, risk_category, category FROM dim_fund"
     dim_fund = pd.read_sql(query, conn)
     conn.close()
